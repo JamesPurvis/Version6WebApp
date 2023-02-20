@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Version6WebAppApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(Version6WebAppApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Version6WebAppApplication.class, args);
+    }
 
 }
