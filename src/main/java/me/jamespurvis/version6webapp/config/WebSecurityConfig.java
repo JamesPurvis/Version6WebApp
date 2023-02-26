@@ -17,6 +17,8 @@ public class WebSecurityConfig {
             "/",
             "/login/*",
             "/register/*",
+            "/css/*",
+            "/js/*",
     };
 
 
