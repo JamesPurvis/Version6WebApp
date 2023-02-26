@@ -2,6 +2,7 @@ package me.jamespurvis.version6webapp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -14,30 +15,39 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
 
     public String[] WHITELIST = {
+            "register/",
             "/",
-            "/login/*",
-            "/register/*",
-            "/css/*",
-            "/js/*",
     };
 
 
+
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .cors()
-                .and()
-                .csrf()
-                .disable()
+                .csrf().disable()
                 .exceptionHandling()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers(WHITELIST)
+                .requestMatchers(WHITELIST).permitAll()
+                .requestMatchers(HttpMethod.GET, "/posts/*").permitAll()
+                .anyRequest().authenticated();
+        http
+                .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/login")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/", true)
+                .failureUrl("/login?error")
                 .permitAll()
-                .anyRequest()
-                .authenticated()
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout")
                 .and()
                 .httpBasic();
 
-                return http.build();
+        return http.build();
+
     }
 }
