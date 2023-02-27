@@ -41,26 +41,41 @@
   </div>
 </nav>
 
-<div class="container-fluid text-center p-3 pb-5">
-  <h1>Login</h1>
-</div>
 
-<div class="container-fluid w-25 bg-dark pt-3 pb-4">
-  <form action="#" method="POST">
-    <div class="form-group text-center">
-      <label class="fw-lighter text-white" for="username">Username</label>
-      <input id="username" type="text"  name="username" class="form-control" placeholder="Enter username"/>
+<div class="container d-flex justify-content-center min-vh-100 align-items-center">
+  <div class="container bg-dark w-50 text-white">
+  <form action="#" method="POST" novalidate>
+    <div class="header text-white text-center pt-3">
+      <h1>Login</h1>
     </div>
-    <div class="form-group text-center pb-3">
-      <label class="fw-lighter text-white" for="password">Password</label>
-      <input id="password" type="password"  name="password" class="form-control" placeholder="Enter password"/>
+    <div class="form-group mb-3 mt-1">
+      <label for="username">Username:</label>
+      <input type="text" name="username"  id="username" class="form-control " required placeholder="Enter username"/>
+      <div class="invalid-feedback">Please enter a username</div>
     </div>
-
-    <div class="form-group text-center">
+    <div class="form-group pb-3 mb-3">
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" class="form-control" required placeholder="Enter password"/>
+      <div class="invalid-feedback">Please enter a password</div>
+    </div>
+    <div class="form-group text-center mb-3 pb-2">
       <button class="btn btn-secondary">Submit!</button>
     </div>
+    </div>
+
   </form>
 </div>
+<script>
+  const form = document.querySelector("form")
+
+  form.addEventListener('submit', e => {
+    if (!form.checkValidity()) {
+      e.preventDefault();
+    }
+
+    form.classList.add('was-validated')
+  });
+</script>
 
 
 <footer class="p-3" style="margin-top: auto; background-color: black; color: white">
