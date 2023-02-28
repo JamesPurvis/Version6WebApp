@@ -40,4 +40,5 @@ public class Avatar {
 
     private String user_role;
 
+
 }

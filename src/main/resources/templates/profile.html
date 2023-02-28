@@ -1,17 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org/"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Version6WebApp - Dashboard</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 </head>
-
-<style>
-    navbar.nav > li > a:hover{
-        background-color:#FCC;
-    }
-</style>
 
 <body style="min-height: 100vh; display: flex; flex-direction: column;">
 
@@ -24,43 +17,26 @@
 </nav>
 
 <div class="offcanvas offcanvas-start text-center" id="offcanvas">
-    <div class="offcanvas-header bg-dark text-white">
+    <div class="offcanvas-header">
         <h1 class="offcanvas-title offset-3">Navigation</h1>
     </div>
-    <div class="offcanvas-body justify-content-start">
-        <ul class="navbar-nav">
-            <li class="pb-4">
-                <div class="container border-bottom pb-1">
-                <a class="nav-link link-dark" th:href="@{/dashboard}">
-                    <i class="fas fa-chart-line"></i> Dashboard Home
-                </a>
-                </div>
+    <div class="offcanvas-body">
+        <ul class="navbar-nav ms-auto text-center">
+            <li>
+                <a class="nav-link active link-dark" th:href="@{/dashboard}">Dashboard Home</a>
             </li>
-            <li class="pb-4">
-                <div class="container border-bottom pb-1">
-                <a class="nav-link link-dark" th:href="@{/login}">
-                    <i class="fas fa-user-edit"></i> Update Profile
-                </a>
-                </div>
+            <li>
+                <a class="nav-link link-dark" th:href="@{/login}">Update Profile</a>
             </li>
-            <li class="pb-4">
-                <div class="container border-bottom pb-1">
-                <a class="nav-link link-dark" th:href="@{/register}">
-                    <i class="fas fa-newspaper"></i> News
-                </a>
-                </div>
+            <li>
+                <a class="nav-link link-dark" th:href="@{/register}">News</a>
             </li>
-            <li class="pb-4">
-                <div class="container border-bottom pb-1">
-                <a class="nav-link link-dark" href="contact.html">
-                    <i class="fas fa-sign-out-alt"></i> Log out
-                </a>
-                </div>
+            <li>
+                <a class="nav-link link-dark" href="contact.html">Log out</a>
             </li>
-
         </ul>
     </div>
-    <button type="button" class="btn btn-dark text-white" data-bs-dismiss="offcanvas">Close</button>
+    <button type="button" class="btn btn-dark" data-bs-dismiss="offcanvas">Close</button>
 </div>
 
 <div class="container d-flex justify-content-center pt-3">
@@ -68,7 +44,7 @@
     </div>
 
 <div class="container">
-    <p class="fw-lighter text-center">Welcome back, <span sec:authentication="name"></span>!</p>
+    <p class="fw-lighter text-center">Welcome back, you last visited on</p>
 </div>
 
 <div class="container pt-3">
@@ -120,5 +96,4 @@
 <script src="/js/bootstrap.bundle.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 <script src="/js/bootstrap.bundle.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://kit.fontawesome.com/865408320e.js" crossorigin="anonymous"></script>
 </html>
