@@ -38,18 +38,31 @@
   </div>
 </nav>
 
-<div class="container min-vw-100" style="background-color:rgb(241, 244, 247);">
-  <div class="row ps-5 pt-3 align-items-center" style="margin-bottom: 0;" >
+<div class="container min-vw-100 min-vh-100 " style="background-color:rgb(241, 244, 247);">
+  <div class="row ps-5 pt-3" style="margin-bottom: 0;" >
       <p style="margin-bottom: 0;" class="fw-bold">Create An Account</p>
     </div>
     <div class="row ps-5">
       <p style="margin: 0; padding-top: 0;">Creating an account just got easier...</p>
     </div>
   <div class="d-flex flex-column pt-3 ps-5">
-    <label class="" for="username">Username</label>
-    <input type="text" class="form-control w-50" name="username" id="username"/>
-    <label for="password">Password</label>
-    <input type="password" class="form-control w-50" name="password" id="password"/>
+    <div class="container">
+    <form action="#" method="POST">
+
+    <label class="pb-2" for="username">Username</label>
+    <input type="text" class="form-control  pb-2 w-50" name="username" id="username"/>
+    <label class="pb-2" for="password">Password</label>
+    <input type="password" class="form-control w-50 pb-2" name="password" id="password"/>
+    <label class="pb-2" for="password2">Confirm Password</label>
+    <input type="password" class="form-control w-50 pb-2" name="password" id="password2"/>
+    <label class="pb-2" for="mission">Mission</label>
+    <input type="text" class="form-control w-50 pb-2" name="mission" id="mission"/>
+    <label class="pb-2" for="email">Email</label>
+    <input type="text" class="form-control w-50 pb-2" name="email" id="email"/>
+      <br>
+      <button class="btn btn-secondary" type="submit">Register</button>
+    </form>
+    </div>
   </div>
 </div>
 
