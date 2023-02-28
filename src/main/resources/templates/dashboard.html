@@ -51,12 +51,33 @@
                 </a>
                 </div>
             </li>
+
+            <li sec:authorize="hasAuthority('ROLE_ADMIN')" class="pb-4">
+                <div class="container border-bottom pb-1">
+                    <a class="nav-link link-dark" th:href="@{/register}">
+                        <i class="fa-solid fa-user"></i>Manage Users
+                    </a>
+                </div>
+            </li>
+            <li sec:authorize="hasAuthority('ROLE_ADMIN')" class="pb-4">
+                <div class="container border-bottom pb-1">
+                    <a class="nav-link link-dark" th:href="@{/register}">
+                        <i class="fa-solid fa-hotel"></i> Manage Rooms
+                    </a>
+                </div>
+            </li>
+
             <li class="pb-4">
                 <div class="container border-bottom pb-1">
-                <a class="nav-link link-dark" href="contact.html">
+                    <form id="logout" action="#"
+                          th:action="@{/logout}"
+                          method="POST">
+
+                <a onclick="document.getElementById('logout').submit();" class="nav-link link-dark">
                     <i class="fas fa-sign-out-alt"></i> Log out
                 </a>
                 </div>
+                </form>
             </li>
 
         </ul>

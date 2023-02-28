@@ -31,6 +31,6 @@ public class UserDetailsService implements org.springframework.security.core.use
 
         Avatar avatar = optionalAvatar.get();
 
-        return new User(avatar.getUsername(), avatar.getPassword(), Collections.emptyList());
+        return new User(avatar.getUsername(), avatar.getPassword(), avatar.getAuthorities());
     }
 }

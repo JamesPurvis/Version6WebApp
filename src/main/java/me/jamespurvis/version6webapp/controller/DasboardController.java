@@ -1,6 +1,8 @@
 package me.jamespurvis.version6webapp.controller;
 
 
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -10,6 +12,7 @@ public class DasboardController {
 
     @GetMapping("/dashboard")
     public String showDashboard() {
+        System.out.println(SecurityContextHolder.getContext().getAuthentication().getAuthorities());
         return "dashboard";
     }
 }

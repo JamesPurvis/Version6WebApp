@@ -17,7 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
 
     public String[] WHITELIST = {
-            "register/",
+            "/register",
             "/",
             "/css/*",
             "/js/*",
@@ -51,7 +51,7 @@ public class WebSecurityConfig {
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout")
+                .logoutSuccessUrl("/index?logout")
                 .and()
                 .httpBasic();
 

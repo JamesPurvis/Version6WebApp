@@ -5,6 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 @Entity
 @Getter
@@ -40,5 +44,8 @@ public class Avatar {
 
     private String user_role;
 
+    public Collection<? extends SimpleGrantedAuthority> getAuthorities() {
+        return Arrays.asList(new SimpleGrantedAuthority(getUser_role()));
+    }
 
 }
