@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org/">
+<html lang="en" xmlns:th="http://thymeleaf.org/"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Version6WebApp - Dashboard</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 </head>
+
+<style>
+    .navbar-nav li a:hover {
+        opacity: 50%;
+    }
+
+</style>
 
 <body style="min-height: 100vh; display: flex; flex-direction: column;">
 
@@ -17,76 +25,92 @@
 </nav>
 
 <div class="offcanvas offcanvas-start text-center" id="offcanvas">
-    <div class="offcanvas-header">
+    <div class="offcanvas-header bg-dark text-white">
         <h1 class="offcanvas-title offset-3">Navigation</h1>
     </div>
-    <div class="offcanvas-body">
-        <ul class="navbar-nav ms-auto text-center">
-            <li>
-                <a class="nav-link active link-dark" th:href="@{/dashboard}">Dashboard Home</a>
+    <div class="offcanvas-body justify-content-start">
+        <ul class="navbar-nav">
+            <li class="pb-4">
+                <div class="container border-bottom pb-1">
+                <a class="nav-link link-dark" th:href="@{/dashboard}">
+                    <i class="fas fa-chart-line"></i> Dashboard Home
+                </a>
+                </div>
             </li>
-            <li>
-                <a class="nav-link link-dark" th:href="@{/login}">Update Profile</a>
+            <li class="pb-4">
+                <div class="container border-bottom pb-1">
+                <a class="nav-link active link-dark" th:href="@{/profile}">
+                    <i class="fas fa-user-edit"></i> Update Profile
+                </a>
+                </div>
             </li>
-            <li>
-                <a class="nav-link link-dark" th:href="@{/register}">News</a>
+            <li class="pb-4">
+                <div class="container border-bottom pb-1">
+                <a class="nav-link link-dark" th:href="@{/register}">
+                    <i class="fas fa-newspaper"></i> News
+                </a>
+                </div>
             </li>
-            <li>
-                <a class="nav-link link-dark" href="contact.html">Log out</a>
+            <li class="pb-4">
+                <div class="container border-bottom pb-1">
+                <a class="nav-link link-dark" href="contact.html">
+                    <i class="fas fa-sign-out-alt"></i> Log out
+                </a>
+                </div>
             </li>
+
         </ul>
     </div>
-    <button type="button" class="btn btn-dark" data-bs-dismiss="offcanvas">Close</button>
+    <button type="button" class="btn btn-dark text-white" data-bs-dismiss="offcanvas">Close</button>
 </div>
 
-<div class="container d-flex justify-content-center pt-3">
-    <h1>User Dashboard</h1>
-    </div>
+<div class="container d-flex pt-3 ps-0">
+    <p class="fw-lighter">My profile</p>
+</div>
+
+<div class="container d-flex pb-3 ps-0">
+    <h6>Hi, <span sec:authentication="name"></span>!</h6>
+</div>
+
+
+<div class="row w-100 mx-auto" style="background-color: rgb(232,234, 238); height: 32px;">
+        <p class="ps-4" style="color: rgb(86, 97, 108);">Account Details</p>
+</div>
 
 <div class="container">
-    <p class="fw-lighter text-center">Welcome back, you last visited on</p>
-</div>
 
-<div class="container pt-3">
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    Featured
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
+</div>
+<div class="row w-100 mx-auto">
+        <div class="col p-3 ps-4">
+            <p class="fw-light"><i class="far fa-address-card me-2 pe-1"></i>Avatar Details
+                <a class="fw-bolder" style="margin-left: 75%" href="#">Edit</a>
+            </p>
+
         </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    Featured
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    Featured
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
+
+        <hr class="p-0" />
+</div>
+<div class="row w-100 mx-auto">
+    <div class="col pe-2">
+        <p class="fw-light p-3 ps-2"><i class="far fa-address-card me-2 pe-1"></i> Account Details
+            <a class="fw-bolder" style="margin-left: 73%" href="#">Edit</a>
+        </p>
     </div>
 </div>
+
+<div class="row w-100 mx-auto" style="background-color: rgb(232,234, 238); height: 32px;">
+    <p class="ps-4" style="color: rgb(86, 97, 108);">Multifactor Auth</p>
+</div>
+<div class="row w-100 mx-auto">
+    <div class="col">
+        <p class="fw-light p-3 ps-2"><i class="far fa-address-card me-2 pe-1"></i> Auth Settings
+            <a class="fw-bolder" style="margin-left: 76%" href="#">Edit</a>
+        </p>
+    </div>
+
+    <hr/>
+</div>
+
 
 <footer class="p-3" style="margin-top: auto; background-color: black; color: white">
            <p class="fw-light text-center">Habbo Hotel Version 6 Emulator. Habbo is licensed trademark of Sulake</p>
@@ -96,4 +120,5 @@
 <script src="/js/bootstrap.bundle.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 <script src="/js/bootstrap.bundle.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://kit.fontawesome.com/865408320e.js" crossorigin="anonymous"></script>
 </html>
