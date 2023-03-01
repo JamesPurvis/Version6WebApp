@@ -1,6 +1,7 @@
 package me.jamespurvis.version6webapp.controller;
 
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ProfileController {
 
     @RequestMapping("/profile")
+    @PreAuthorize("isAuthenticated()")
     public String showProfilePage() {
         return "profile";
     }
