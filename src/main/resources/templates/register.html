@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <title>Version6WebApp - Register</title>
   <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css' rel='stylesheet' type='text/css'
 </head>
+
 <body style="min-height: 100vh; display: flex; flex-direction: column;">
 
 <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: black">
@@ -46,19 +48,33 @@
       </div>
       <div class="flex-column min-vw-100">
         <p style="font-size: 1.37em;" class="fw-lighter pb-4">Creating an account is easy...</p>
-        <form action="#" method="POST">
-        <label for="username">Username:</label>
-        <input class="form-control pb-2 w-75" type="text" id="username" name="username"/>
-        <label class="pt-3" for="password">Password:</label>
+        <div th:if="${param.error_name_taken != null}" >
+           <script>alert('Darn! that name has already been taken!')</script>
+        </div>
+
+        </div>
+        <form th:action="@{/register}" th:object="${avatar}" method="POST">
+          <div class="flex-column">
+            <label for="sex">Male</label>
+            <input type="radio" class="form-check-input" name="sex" id="sex" value="M" required>
+            <label class="ps-4" for="sex2">Female</label>
+            <input type="radio" class="form-check-input" name="sex" id="sex2" value="F" required>
+          </div>
+        <label class="pt-3" for="username">Username:</label>
+        <input  required class="form-control pb-2 w-75" type="text" id="username" name="username"/>
+        <label class="pt-3" required for="password">Password:</label>
         <input class="form-control pb-2 w-75" type="password" id="password" name="password"/>
+          <div class="invalid-feedback">Passwords don't match.</div>
         <label class="pt-3" for="password2">Confirm Password:</label>
-        <input class="form-control pb-2 w-75" type="password" id="password2" name="password2"/>
+        <input class="form-control pb-2 w-75" required type="password" id="password2" name="password2"/>
+          <div class="invalid-feedback">Passwords don't match.</div>
           <label class="pt-3" for="email">Email:</label>
-          <input class="form-control pb-2 w-75" type="text" id="email" name="email"/>
+          <input class="form-control pb-2 w-75" type="text" id="email" required name="email"/>
           <label class="pt-3" for="mission">Mission:</label>
-          <input class="form-control w-75" type="text" id="mission" name="mission"/>
-          <br>
-          <button type="submit" class="btn btn-primary w-75 rounded-5">Register</button>
+          <input class="form-control w-75" required type="text" id="mission" name="mission"/>
+          <div class="pt-3 flex-column">
+            <button class="btn btn-primary w-75" type="submit" >Register</button>
+          </div>
         </form>
       </div>
     </div>
@@ -73,4 +89,32 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js' type='text/javascript'></script>
+
+<script>
+const form = document.querySelector("form")
+
+form.addEventListener('submit', e => {
+
+  const password1 = document.getElementById("password");
+  const password2= document.getElementById("password2");
+
+  const username = document.getElementById("username");
+
+  if (password1.value != password2.value) {
+    password1.setCustomValidity("Invalid field.");
+    password2.setCustomValidity("Invalid field.");
+  }
+
+
+
+if (!form.checkValidity()) {
+  e.preventDefault();
+}
+
+form.classList.add('was-validated')
+});
+
+</script>
+
 </html>

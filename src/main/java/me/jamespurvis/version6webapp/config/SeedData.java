@@ -18,11 +18,15 @@ public class SeedData implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         Avatar avatar = new Avatar();
+        avatar.setEmail("cool@poopie.com");
+        avatar.setFigure("1000118001270012900121001");
         avatar.setUsername("Admin");
         avatar.setPassword("lol123");
         avatar.setUser_role("ROLE_ADMIN");
 
         Avatar avatar2 = new Avatar();
+        avatar.setEmail("admin@lol.com");
+        avatar.setFigure("1000118001270012900121001");
         avatar2.setUsername("Andy");
         avatar2.setPassword("123123");
         avatar2.setUser_role("ROLE_USER");

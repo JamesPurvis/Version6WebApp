@@ -18,9 +18,13 @@ public class WebSecurityConfig {
 
     public String[] WHITELIST = {
             "/register",
+            "/register_success",
+            "/register/*",
+            "/login/*",
             "/",
             "/css/*",
             "/js/*",
+
     };
 
 
