@@ -99,13 +99,21 @@ form.addEventListener('submit', e => {
 
   const password1 = document.getElementById("password");
   const password2= document.getElementById("password2");
-
-  const username = document.getElementById("username");
+  let failed = false;
 
   if (password1.value != password2.value) {
     password1.setCustomValidity("Invalid field.");
     password2.setCustomValidity("Invalid field.");
   }
+
+  if (failed == false && password1.checkValidity() == false) {
+    password1.setCustomValidity("");
+  }
+
+  if (failed == false && password2.checkValidity() == false) {
+    password2.setCustomValidity("");
+  }
+
 
 
 

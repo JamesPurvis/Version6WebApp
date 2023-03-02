@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Version6WebApp - Avatar Details</title>
+    <title>Version6WebApp - Account Update</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 </head>
 
@@ -76,33 +76,22 @@
            <a th:href="@{/profile}"> <i style="font-size: 2em;" class="fa-solid fa-arrow-left pe-3"></i></a>
         </div>
         <div class="flex-column">
-            <h5 class="fw-lighter">View Avatar Details </h5>
+            <h5 class="fw-lighter">Update Account Details </h5>
         </div>
     </div>
 
     <div class="container d-flex flex-row">
         <div class="form-group row w-100">
-            <form method="POST" action="#">
-            <label for="username">Username:</label>
-            <input  class="form-control" type="text" name="username" id="username" th:placeholder="${#authentication.name}" readonly>
-            <label for="mission">Mission:</label>
-            <input  class="form-control" type="text" name="mission" id="mission" th:placeholder="${mission}">
-            <label for="username">Role:</label>
-            <input class="form-control" type="text" name="role" id="role" th:placeholder="${role}" readonly>
-            <label for="mission">Credits:</label>
-            <input class="form-control" type="text" name="credits" id="credits" th:placeholder="${credits}" readonly>
-            <label for="username">Tickets:</label>
-            <input class="form-control" type="text" name="tickets" id="tickets" th:placeholder="${tickets}" readonly>
-            <label for="mission">Film:</label>
-            <input class="form-control" type="text" name="film" id="film" th:placeholder="${film}" readonly>
-            <label for="username">Console Status:</label>
-            <input class="form-control" type="text" name="persistent_message" id="persistent_message" th:placeholder="${persistent_message}">
-            <label for="mission">Figure:</label>
-            <input class="form-control" type="text" name="figure" id="figure" th:placeholder="${figure}" readonly>
-            <label for="username">Sex</label>
-            <input class="form-control" type="text" name="sex" id="sex" th:placeholder="${sex}" readonly>
-            <label for="mission">Pool Figure:</label>
-            <input class="form-control" type="text" name="pool_figure" id="pool_figure" th:placeholder="${pool_figure}" readonly>
+            <form id="update" th:action="@{/profile_update}"method="POST" novalidate>
+            <label for="email">Email:</label>
+            <input class="form-control" type="text" name="email" id="email" th:value="${email}" required>
+                <div class="invalid-feedback">Email is required</div>
+            <label for="password">Password:</label>
+            <input class="form-control" type="password" name="password" id="password"/>
+                <div class="invalid-feedback">Password is invalid</div>
+            <label for="password2">Confirm Password:</label>
+            <input class="form-control" type="password" name="password2" id="password2"/>
+                <div class="invalid-feedback">Password is invalid</div>
                 <br>
                 <button type="submit" class="btn btn-primary w-100">Submit</button>
             </form>
@@ -114,9 +103,53 @@
            <p class="fw-light text-center">Habbo Hotel Version 6 Emulator. Habbo is licensed trademark of Sulake</p>
        </footer>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="/js/bootstrap.bundle.min.js"</script>
+<script>
+
+    const form = document.getElementById("update");
+
+    form.addEventListener('submit', e => {
+
+        const password1 = document.getElementById("password");
+        const password2 = document.getElementById("password2");
+        const email = document.getElementById("email");
+        let failed = false;
+
+
+        if (password1.value != password2.value || password1.value.length == 0 || password2.value.length == 0) {
+            failed = true;
+            password1.setCustomValidity("Invalid field.");
+            password2.setCustomValidity("Invalid field.");
+        }
+
+        if (email.value.length == 0) {
+            failed = true;
+            email.setCustomValidity("Invalid field.");
+        }
+
+        if (failed == false && password1.checkValidity() == false) {
+            password1.setCustomValidity("");
+        }
+
+        if (failed == false && password2.checkValidity() == false) {
+            password2.setCustomValidity("");
+        }
+
+        if (failed == false && email.checkValidity() == false) {
+            email.setCustomValidity("");
+        }
+
+
+        if (!form.checkValidity()) {
+            e.preventDefault();
+        }
+
+        form.classList.add('was-validated')
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
 <script src="/js/bootstrap.bundle.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://kit.fontawesome.com/865408320e.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/865408320e.js"></script>
 </html>
