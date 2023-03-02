@@ -77,6 +77,21 @@ public class ProfileController {
 
         avatarService.save(avatar.get());
 
-        return "/profile";
+        return "redirect:/profile?update_account_success";
+    }
+
+    @PostMapping("/profile_update_avatar")
+    @PreAuthorize("isAuthenticated()")
+
+    public String updateAvatar(@RequestParam("mission") String mission, @RequestParam("persistent_message") String console_mission) {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<Avatar> avatar = avatarService.findByUsername(userDetails.getUsername());
+
+        avatar.get().setMission(mission);
+        avatar.get().setPersistent_message(console_mission);
+
+        avatarService.save(avatar.get());
+
+        return "redirect:/profile?update_avatar_success";
     }
 }

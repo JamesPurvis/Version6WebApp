@@ -24,6 +24,7 @@ public class WebSecurityConfig {
             "/",
             "/css/*",
             "/js/*",
+            "/profile/*",
 
     };
 

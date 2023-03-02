@@ -82,7 +82,7 @@
 
     <div class="container d-flex flex-row">
         <div class="form-group row w-100">
-            <form method="POST" action="#">
+            <form method="POST" th:action="@{/profile_update_avatar}">
             <label for="username">Username:</label>
             <input  class="form-control" type="text" name="username" id="username" th:placeholder="${#authentication.name}" readonly>
             <label for="mission">Mission:</label>
