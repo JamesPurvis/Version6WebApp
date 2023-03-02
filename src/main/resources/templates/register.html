@@ -53,25 +53,28 @@
         </div>
 
         </div>
-        <form th:action="@{/register}" th:object="${avatar}" method="POST">
+        <form th:action="@{/register}" th:object="${avatar}" method="POST" novalidate>
           <div class="flex-column">
             <label for="sex">Male</label>
             <input type="radio" class="form-check-input" name="sex" id="sex" value="M" required>
             <label class="ps-4" for="sex2">Female</label>
             <input type="radio" class="form-check-input" name="sex" id="sex2" value="F" required>
+            <div class="invalid-feedback">Sex is required</div>
           </div>
         <label class="pt-3" for="username">Username:</label>
         <input  required class="form-control pb-2 w-75" type="text" id="username" name="username"/>
+          <div class="invalid-feedback">Username is required.</div>
         <label class="pt-3" required for="password">Password:</label>
         <input class="form-control pb-2 w-75" type="password" id="password" name="password"/>
-          <div class="invalid-feedback">Passwords don't match.</div>
+          <div class="invalid-feedback">Password is invalid.</div>
         <label class="pt-3" for="password2">Confirm Password:</label>
         <input class="form-control pb-2 w-75" required type="password" id="password2" name="password2"/>
-          <div class="invalid-feedback">Passwords don't match.</div>
+          <div class="invalid-feedback">Password is invalid.</div>
           <label class="pt-3" for="email">Email:</label>
           <input class="form-control pb-2 w-75" type="text" id="email" required name="email"/>
+          <div class="invalid-feedback">Email is required.</div>
           <label class="pt-3" for="mission">Mission:</label>
-          <input class="form-control w-75" required type="text" id="mission" name="mission"/>
+          <input class="form-control w-75" type="text" id="mission" name="mission"/>
           <div class="pt-3 flex-column">
             <br>
             <button class="btn btn-primary w-75" type="submit" >Register</button>
@@ -98,12 +101,19 @@ const form = document.querySelector("form")
 form.addEventListener('submit', e => {
 
   const password1 = document.getElementById("password");
-  const password2= document.getElementById("password2");
+  const password2 = document.getElementById("password2");
+  const email = document.getElementById("email");
   let failed = false;
 
-  if (password1.value != password2.value) {
+  if (password1.value != password2.value || password1.value.length == 0 || password2.value.length == 0) {
+    failed = true;
     password1.setCustomValidity("Invalid field.");
     password2.setCustomValidity("Invalid field.");
+  }
+
+  if (email.value.length == 0) {
+    failed = true;
+    email.setCustomValidity("Invalid field.");
   }
 
   if (failed == false && password1.checkValidity() == false) {
@@ -114,8 +124,9 @@ form.addEventListener('submit', e => {
     password2.setCustomValidity("");
   }
 
-
-
+  if (failed == false && email.checkValidity() == false) {
+    email.setCustomValidity("");
+  }
 
 if (!form.checkValidity()) {
   e.preventDefault();
