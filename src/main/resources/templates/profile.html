@@ -12,6 +12,19 @@
         opacity: 50%;
     }
 
+
+
+    tbody::after
+    {
+        content: '';
+        display: block;
+        height: 20px;
+
+    }
+    tr.bordered {
+        border-bottom: 1px solid lightgray;
+    }
+
 </style>
 
 <body style="min-height: 100vh; display: flex; flex-direction: column;">
@@ -69,57 +82,55 @@
     <button type="button" class="btn btn-dark text-white" data-bs-dismiss="offcanvas">Close</button>
 </div>
 
-<div class="container d-flex pt-3 ps-0">
-    <p class="fw-lighter">My profile</p>
-</div>
-
-<div class="container d-flex pb-3 ps-0">
-    <h6>Hi, <span sec:authentication="name"></span>!</h6>
-</div>
-
-
-<div class="row w-100 mx-auto" style="background-color: rgb(232,234, 238); height: 32px;">
-        <p class="ps-4" style="color: rgb(86, 97, 108);">Account Details</p>
-</div>
-
-<div class="container">
-
-</div>
-<div class="row w-100 mx-auto">
-        <div class="col p-3 ps-4">
-            <p class="fw-light">
-                <i class="fas fa-user-circle me-2 pe-1"></i>
-                Avatar Details
-                <a class="fw-bolder" style="margin-left: 75%" href="#">Edit</a>
-            </p>
+<div class="container min-vw-100 min-vh-100 pt-5" style="background-color: rgb(255, 255, 255)">
+    <div class="d-flex ms-5">
+        <div class="flex-row">
+            <div class="flex-column">
+                <p class="fw-bolder">My profile</p>
+            </div>
+            <div class="flex-column">
+                <p class="fw-lighter">Hi, <span sec:authentication="name"></span>!</p>
+            </div>
         </div>
-
-        <hr class="p-0" />
-</div>
-<div class="row w-100 mx-auto">
-    <div class="col">
-        <p class="fw-light p-3 ps-2"><i class="far fa-address-card me-2 pe-1"></i> Account Details
-            <a class="fw-bolder" style="margin-left: 75%" href="#">Edit</a>
-        </p>
-    </div>
-</div>
-
-<div class="row w-100 mx-auto" style="background-color: rgb(232,234, 238); height: 32px;">
-    <span class="ps-4" style="color: rgb(86, 97, 108);">Multifactor Auth</span>
-</div>
-<div class="row w-100 mx-auto">
-    <div class="col">
-        <p class="fw-light p-3 ps-2">
-            <i class="fas fa-lock me-2 pe-1"></i>
-            Auth Settings
-            <a class="fw-bolder" style="margin-left: 78%" href="#">Edit</a>
-        </p>
-
     </div>
 
-    <hr/>
-</div>
+    <div class="d-flex row">
+        <table>
+        <thead class="fw-lighter" style="background-color: rgb(232, 234, 238); width: 100%;">
+        <tr>
+            <th  colspan="3" class="ms-auto ps-5">Account Details</th>
+        </tr>
+        </thead>
+            <tbody>
+            <tr>
+            <td class="ps-3 pt-4"><i class="fas fa-user-circle"></i></td>
+            <td class="pt-4">Avatar Details</td>
+            <td class="pt-4"><a href="#">Edit</a></td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr>
+                <td class="ps-3 pt-4"><i class="fas fa-user-circle"></i></td>
+                <td class="pt-4">Account Details</td>
+                <td class="pt-4"><a href="#">Edit</a></td>
+            </tr>
+            </tbody>
+            <thead class="fw-lighter" style="background-color: rgb(232, 234, 238); width: 100%;">
+            <tr>
+                <th  colspan="3" class="ms-auto ps-5">Multifactor Auth</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="ps-3 pt-4"><i class="fas fa-user-circle"></i></td>
+                <td class="pt-4">Auth Settings</td>
+                <td class="pt-4"><a href="#">Edit</a></td>
+            </tr>
+            </tbody>
+        </table>
 
+    </div>
+</div>
 
 <footer class="p-3" style="margin-top: auto; background-color: black; color: white">
            <p class="fw-light text-center">Habbo Hotel Version 6 Emulator. Habbo is licensed trademark of Sulake</p>
