@@ -73,16 +73,25 @@
 
     <div class="container d-flex flex-row pb-3">
         <div class="flex-column">
-            <i class="fa-solid fa-arrow-left pe-3"></i>
+           <a th:href="@{/profile}"> <i class="fa-solid fa-arrow-left pe-3"></i></a>
         </div>
         <div class="flex-column">
             <h5 class="fw-lighter">Avatar Details </h5>
         </div>
     </div>
-</div>
 
-<div class="container d-flex flex-row">
-    <div class="container"
+    <div class="container d-flex flex-row">
+        <div class="form-group row">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" th:placeholder="${#authentication.name}" readonly>
+            <label for="mission">Mission:</label>
+            <input type="text" name="mission" id="mission" th:placeholder="${mission}" readonly>
+            <label for="username">Role:</label>
+            <input type="text" name="role" id="role" th:placeholder="${role}" readonly>
+            <label for="mission">Credits:</label>
+            <input type="text" name="credits" id="credits" th:placeholder="${credits}" readonly>
+        </div>
+    </div>
 </div>
 
 <footer class="p-3" style="margin-top: auto; background-color: black; color: white">
