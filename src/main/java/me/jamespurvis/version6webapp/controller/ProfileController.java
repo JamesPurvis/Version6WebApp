@@ -13,4 +13,10 @@ public class ProfileController {
     public String showProfilePage() {
         return "profile";
     }
+
+    @RequestMapping("/profile_avatar")
+    @PreAuthorize("isAuthenticated()")
+    public String showUpdatePage() {
+        return "profile_avatar";
+    }
 }
