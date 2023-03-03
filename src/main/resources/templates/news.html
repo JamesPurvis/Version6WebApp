@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Version6WebApp - Dashboard</title>
+    <title>Version6WebApp - News</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 </head>
 
@@ -46,7 +46,7 @@
             </li>
             <li class="pb-4">
                 <div class="container border-bottom pb-1">
-                <a class="nav-link link-dark" th:href="@{/news}">
+                <a class="nav-link link-dark" th:href="@{/register}">
                     <i class="fas fa-newspaper"></i> News
                 </a>
                 </div>
@@ -86,53 +86,31 @@
 </div>
 
 <div class="container d-flex justify-content-center pt-3">
-    <h1>User Dashboard</h1>
+    <h1>News</h1>
     </div>
 
 <div class="container">
-    <p class="fw-lighter text-center">Welcome back, <span sec:authentication="name"></span>!</p>
+    <p class="fw-lighter text-center">Write new post</p>
 </div>
 
-<div class="container pt-3">
-    <div class="row">
-        <div class="col">
+<div class="container d-flex justify-content-center" th:each="post : ${posts}">
+    <div class="row w-50">
+        <div class="col pb-3">
             <div class="card">
                 <div class="card-header">
-                    Featured
+                    <h5 th:text="'Written by ' + ${post.avatar.username}">Written by</h5>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-body" th:text="${post.title}">Title</h5>
+                    <p class="card-text" th:text="${post.body}">body text</p>
+                    <a th:href="@{'/posts/' + ${post.id}}" class="btn btn-primary">Read Article!</a>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    Featured
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    Featured
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
+</div>
+
+
 
 <footer class="p-3" style="margin-top: auto; background-color: black; color: white">
            <p class="fw-light text-center">Habbo Hotel Version 6 Emulator. Habbo is licensed trademark of Sulake</p>
