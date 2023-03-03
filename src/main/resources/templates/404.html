@@ -3,8 +3,8 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Version6WebApp - Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <title>Version6WebApp - 404 Not Found</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
 </head>
 
 <style>
@@ -85,52 +85,9 @@
     <button type="button" class="btn btn-dark text-white" data-bs-dismiss="offcanvas">Close</button>
 </div>
 
-<div class="container d-flex justify-content-center pt-3">
-    <h1>User Dashboard</h1>
-    </div>
-
-<div class="container">
-    <p class="fw-lighter text-center">Welcome back, <span sec:authentication="name"></span>!</p>
-</div>
-
-<div class="container pt-3">
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    Featured
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    Featured
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    Featured
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
+<div class="container w-50 pt-3 justify-content-center">
+    <div class="alert alert-danger" role="alert">
+        <p>Error: The requested resource was not found</p>
     </div>
 </div>
 

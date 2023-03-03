@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Version6WebApp - News</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
 </head>
 
 <style>
@@ -46,7 +46,7 @@
             </li>
             <li class="pb-4">
                 <div class="container border-bottom pb-1">
-                <a class="nav-link link-dark" th:href="@{/register}">
+                <a class="nav-link link-dark" th:href="@{/news/page/1}">
                     <i class="fas fa-newspaper"></i> News
                 </a>
                 </div>
@@ -89,25 +89,27 @@
     <h1>News</h1>
     </div>
 
-<div class="container">
-    <p class="fw-lighter text-center">Write new post</p>
+<div sec:authorize="hasAuthority('ROLE_ADMIN')" class="container">
+<p class="fw-lighter text-center"><a th:href="@{/posts/new/}">Write new post</a></p>
 </div>
 
-<div class="container d-flex justify-content-center" th:each="post : ${posts}">
-    <div class="row w-50">
-        <div class="col pb-3">
+
+
+<div class="container d-flex justify-content-center">
+    <div class="pt-3 row w-75 pb-3 justify-content-center" th:each="post : ${posts}">
+        <div class="col pe-5 justify-content-center">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header text-center">
                     <h5 th:text="'Written by ' + ${post.avatar.username}">Written by</h5>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-center">
                     <h5 class="card-body" th:text="${post.title}">Title</h5>
                     <p class="card-text" th:text="${post.body}">body text</p>
-                    <a th:href="@{'/posts/' + ${post.id}}" class="btn btn-primary">Read Article!</a>
+                    <a th:href="@{'/news/posts/' + ${post.id}}" class="btn btn-primary">Read Article!</a>
                 </div>
             </div>
         </div>
-</div>
+        </div>
 </div>
 
 

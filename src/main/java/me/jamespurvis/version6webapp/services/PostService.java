@@ -5,6 +5,9 @@ import me.jamespurvis.version6webapp.models.Avatar;
 import me.jamespurvis.version6webapp.models.Post;
 import me.jamespurvis.version6webapp.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -25,6 +28,13 @@ public class PostService {
 
         return postRepository.findAll();
     }
+
+    public Page<Post> findPage(int pageNumber, int pageSize) {
+        Pageable pageRequest = PageRequest.of(pageNumber - 1, pageSize);
+
+        return postRepository.findAll(pageRequest);
+    }
+
 
     public Post save(Post post) {
 
