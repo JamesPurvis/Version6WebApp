@@ -41,7 +41,7 @@ public class PostController {
     @GetMapping("/news/page/{pageNumber}")
     public String findPage(@PathVariable("pageNumber") int pageNumber, Model model) {
 
-        int pageSize = 6;
+        int pageSize = 2;
 
         Page<Post> findPage = postService.findPage(pageNumber, pageSize);
         List<Post> posts = findPage.getContent();

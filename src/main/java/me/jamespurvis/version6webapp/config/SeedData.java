@@ -56,8 +56,33 @@ public class SeedData implements CommandLineRunner {
             post2.setAvatar(avatar2);
             post2.setTitle("Post 2");
 
+            Post post3 = new Post();
+            post3.setBody("Hello, this is post 3");
+            post3.setAvatar(avatar);
+            post3.setTitle("Post 3");
+
+            Post post4 = new Post();
+            post4.setBody("Hello, this is post 4");
+            post4.setAvatar(avatar2);
+            post4.setTitle("Post 4");
+
+            Post post5 = new Post();
+            post5.setBody("Hello, this is post 5");
+            post5.setAvatar(avatar);
+            post5.setTitle("Post 5");
+
+            Post post6 = new Post();
+            post6.setBody("Hello, this is post 6");
+            post6.setAvatar(avatar2);
+            post6.setTitle("Post 6");
+
+
             postService.save(post1);
             postService.save(post2);
+            postService.save(post3);
+            postService.save(post4);
+            postService.save(post5);
+            postService.save(post6);
 
         }
 

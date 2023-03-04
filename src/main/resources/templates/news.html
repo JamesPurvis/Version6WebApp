@@ -14,7 +14,7 @@
 
 </style>
 
-<body style="min-height: 100vh; display: flex; flex-direction: column;">
+<body style="min-height: 100vh; display: flex; flex-direction: column; background-color: rgb(241, 244, 247);">
 
 <nav class="navbar navbar-expand navbar-dark bg-dark">
 
@@ -85,14 +85,13 @@
     <button type="button" class="btn btn-dark text-white" data-bs-dismiss="offcanvas">Close</button>
 </div>
 
-<div class="container d-flex justify-content-center pt-3">
-    <h1>News</h1>
+<div class="container d-flex ms-0 p-0 pt-3 min-vw-100 text-white text-center pb-5">
+    <div class="flex-row w-100 bg-primary p-5">
+        <h1 class="text-center">Featured Article</h1>
+        <p class="text-center"> Check a featured article out below!</p>
+        <a href="#" class="btn btn-light">Check it out!</a>
     </div>
-
-<div sec:authorize="hasAuthority('ROLE_ADMIN')" class="container">
-<p class="fw-lighter text-center"><a th:href="@{/posts/new/}">Write new post</a></p>
 </div>
-
 
 
 <div class="container d-flex justify-content-center">
@@ -109,8 +108,31 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 </div>
+
+    <ul class="pagination justify-content-center  w-100">
+        <p th:with="someVariable=${currentPage - 1}">
+        <li th:if="${currentPage > 1}" class="page-item"><a class="page-link" th:href="@{'/news/page/' + ${currentPage - 1}}">Previous</a></li>
+        <li th:if="${currentPage == 1}" class="page-item"><a class="page-link" th:href="@{'/news/page/' + ${currentPage}}">Previous</a></li>
+        <li class="page-item"><a class="page-link" th:href="@{'/news/page/' + ${1}}">1</a></li>
+        <li class="page-item"><a class="page-link" th:href="@{'/news/page/' + ${2}}">2</a></li>
+        <li class="page-item"><a class="page-link" th:href="@{'/news/page/' + ${3}}">3</a></li>
+        <li th:if="${currentPage < totalPages}" class="page-item"><a class="page-link" th:href="@{'/news/page/' + ${currentPage + 1}}">Next</a></li>
+        <li th:if="${currentPage == totalPages}" class="page-item"><a class="page-link" th:href="@{'/news/page/' + ${currentPage}}">Next</a></li>
+    </ul>
+
+
+
+
+
+<div sec:authorize="hasAuthority('ROLE_ADMIN')" class="container">
+<p class="fw-lighter text-center"><a th:href="@{/posts/new/}">Write new post</a></p>
+</div>
+
+
+
+
 
 
 
